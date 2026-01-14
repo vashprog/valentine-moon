@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@layer base {
+    :root {
+        /* Cosmic Romantic Color System - Deep Space with Gold Accents */
+        --background: 240 40% 8%;
+        --foreground: 240 10% 95%;
+        
+        --card: 240 30% 12%;
+        --card-foreground: 240 10% 95%;
+        
+        --popover: 240 35% 10%;
+        --popover-foreground: 240 10% 95%;
+        
+        /* Primary: Deep Space Purple */
+        --primary: 260 50% 30%;
+        --primary-foreground: 240 10% 98%;
+        --primary-glow: 260 60% 45%;
+        
+        /* Secondary: Cosmic Blue */
+        --secondary: 220 40% 25%;
+        --secondary-foreground: 240 10% 95%;
+        
+        /* Accent: Romantic Gold */
+        --accent: 45 85% 55%;
+        --accent-foreground: 240 40% 10%;
+        --accent-glow: 45 90% 65%;
+        
+        /* Supporting Colors */
+        --muted: 240 25% 18%;
+        --muted-foreground: 240 8% 60%;
+        
+        --destructive: 0 72% 51%;
+        --destructive-foreground: 240 10% 98%;
+        
+        --border: 240 20% 20%;
+        --input: 240 20% 20%;
+        --ring: 45 85% 55%;
+        
+        --radius: 1rem;
+        
+        /* Custom Cosmic Gradients */
+        --gradient-cosmic: linear-gradient(135deg, hsl(260 50% 30%), hsl(220 40% 25%), hsl(240 40% 20%));
+        --gradient-nebula: linear-gradient(180deg, hsl(260 60% 15% / 0.4), hsl(240 40% 8% / 0.8));
+        --gradient-stardust: radial-gradient(circle at 50% 50%, hsl(260 50% 30% / 0.3), transparent 70%);
+        --gradient-gold-shimmer: linear-gradient(135deg, hsl(45 85% 55% / 0.2), hsl(45 90% 65% / 0.1));
+        --gradient-romantic: linear-gradient(135deg, hsl(260 60% 45% / 0.15), hsl(45 85% 55% / 0.1));
+        
+        /* Shadows with Cosmic Glow */
+        --shadow-elegant: 0 10px 40px -10px hsl(260 50% 30% / 0.5);
+        --shadow-glow: 0 0 60px hsl(45 85% 55% / 0.3), 0 0 100px hsl(260 60% 45% / 0.2);
+        --shadow-card: 0 8px 30px hsl(240 40% 8% / 0.6);
+        
+        /* Animations */
+        --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        background: linear-gradient(180deg, hsl(240 40% 8%), hsl(240 50% 5%));
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+}
+
+/* Custom Scrollbar */
+@layer utilities {
+    .scrollbar-cosmic::-webkit-scrollbar {
+        width: 10px;
+    }
+    .scrollbar-cosmic::-webkit-scrollbar-track {
+        background: hsl(var(--background));
+    }
+    .scrollbar-cosmic::-webkit-scrollbar-thumb {
+        background: hsl(var(--accent) / 0.3);
+        border-radius: 5px;
+    }
+    .scrollbar-cosmic::-webkit-scrollbar-thumb:hover {
+        background: hsl(var(--accent) / 0.5);
+    }
+}
+
+/* Cosmic Text Gradient */
+@layer utilities {
+    .text-gradient-gold {
+        background: linear-gradient(135deg, hsl(45 85% 60%), hsl(45 90% 75%));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .text-gradient-cosmic {
+        background: linear-gradient(135deg, hsl(260 60% 65%), hsl(220 50% 70%));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+/* Star Animation */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px hsl(45 85% 55% / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(45 85% 55% / 0.6), 0 0 60px hsl(260 60% 45% / 0.4); }
+}
+
+.animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Canvas Container */
+.canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+.ui-overlay {
+    position: relative;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.ui-overlay > * {
+    pointer-events: auto;
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
